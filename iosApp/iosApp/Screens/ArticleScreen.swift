@@ -92,7 +92,7 @@ struct ArticleItemView: View {
             Text(article.title)
                 .font(.title)
                 .fontWeight(.bold)
-            Text(article.description)
+            Text(article.desc)
             Text(article.date).frame(maxWidth: .infinity, alignment: .trailing).foregroundStyle(.gray)
         }
         .padding(16)
