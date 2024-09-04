@@ -33,11 +33,12 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.angelorobson.dailypulse.articles.Article
 import com.angelorobson.dailypulse.articles.ArticlesViewModel
+import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun ArticlesScreen(
     onAboutButtonClick: () -> Unit,
-    articlesViewModel: ArticlesViewModel,
+    articlesViewModel: ArticlesViewModel = getViewModel(),
 ) {
     val articlesState = articlesViewModel.articlesState.collectAsState()
 
@@ -98,7 +99,7 @@ fun ArticleItemView(article: Article) {
             style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 22.sp)
         )
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = article.description)
+        Text(text = article.desc)
         Spacer(modifier = Modifier.height(4.dp))
         Text(
             text = article.date,
