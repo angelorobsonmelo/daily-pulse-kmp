@@ -8,5 +8,5 @@ data class SourcesResponse(
     @SerialName("status")
     val status: String,
     @SerialName("sources")
-    val sources: List<SourceRaw>,
+    val sources: List<SourceRawResponse>,
 )

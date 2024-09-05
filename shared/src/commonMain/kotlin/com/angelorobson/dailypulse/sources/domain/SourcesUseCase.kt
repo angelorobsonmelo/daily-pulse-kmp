@@ -1,25 +1,17 @@
 package com.angelorobson.dailypulse.sources.domain
 
-import com.angelorobson.dailypulse.sources.data.network.responses.SourceRaw
-import com.angelorobson.dailypulse.sources.data.repositories.SourcesRepository
+import com.angelorobson.dailypulse.sources.domain.mappers.SourceMapper
 import com.angelorobson.dailypulse.sources.domain.models.Source
+import com.angelorobson.dailypulse.sources.domain.repositories.SourcesRepository
 
-class SourcesUseCase(private val repo: SourcesRepository) {
+class SourcesUseCase(
+    private val repo: SourcesRepository,
+    private val mapper: SourceMapper
+) {
 
     suspend fun getSources(): List<Source> {
         val sourcesRaw = repo.getAllSources()
 
-        return mapSources(sourcesRaw)
+        return mapper.mapSources(sourcesRaw)
     }
-
-    private fun mapSources(sourcesRaw: List<SourceRaw>): List<Source> = sourcesRaw.map { raw ->
-        Source(
-            raw.id,
-            raw.name,
-            raw.desc,
-            mapOrigin(raw),
-        )
-    }
-
-    private fun mapOrigin(raw: SourceRaw) = "${raw.country} - ${raw.language}"
 }
