@@ -1,12 +1,13 @@
 package com.angelorobson.dailypulse.sources.domain.local
 
-import com.angelorobson.dailypulse.sources.data.network.responses.SourceRawResponse
+import com.angelorobson.dailypulse.db.SourceEntity
+import com.angelorobson.dailypulse.sources.domain.models.Source
 
 interface SourcesLocalDataSource {
 
-    fun getAllSources(): List<SourceRawResponse>
+    fun getAllSources(): List<SourceEntity>
 
     fun clearSources()
 
-    fun createSources(sources: List<SourceRawResponse>)
+    fun createSources(sources: List<Source>)
 }

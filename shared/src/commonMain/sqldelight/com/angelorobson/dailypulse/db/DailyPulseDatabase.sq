@@ -1,4 +1,4 @@
-CREATE TABLE Article (
+CREATE TABLE ArticleEntity (
     title TEXT NOT NULL,
     desc TEXT,
     date TEXT NOT NULL,
@@ -6,31 +6,32 @@ CREATE TABLE Article (
 );
 
 insertArticle:
-INSERT INTO Article(title, desc, date, imageUrl)
+INSERT INTO ArticleEntity(title, desc, date, imageUrl)
 VALUES(?, ?, ?, ?);
 
 selectAllArticles:
-SELECT Article.*
-FROM Article;
+SELECT ArticleEntity.*
+FROM ArticleEntity;
 
 removeAllArticles:
-DELETE FROM Article;
+DELETE FROM ArticleEntity;
 
-CREATE TABLE Source (
+CREATE TABLE SourceEntity (
     id TEXT NOT NULL,
     name TEXT NOT NULL,
     desc TEXT NOT NULL,
     language TEXT NOT NULL,
-    country TEXT NOT NULL
+    country TEXT NOT NULL,
+    origin TEXT NOT NULL
 );
 
 insertSource:
-INSERT INTO Source(id, name, desc, language, country)
-VALUES(?, ?, ?, ?, ?);
+INSERT INTO SourceEntity(id, name, desc, language, country, origin)
+VALUES(?, ?, ?, ?, ?,  ?);
 
 selectAllSources:
-SELECT Source.*
-FROM Source;
+SELECT SourceEntity.*
+FROM SourceEntity;
 
 removeAllSources:
-DELETE FROM Source;
+DELETE FROM SourceEntity;
