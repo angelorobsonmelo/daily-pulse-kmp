@@ -48,7 +48,7 @@ fun ArticlesScreen(
         AppBar(onAboutButtonClick, onSourcesButtonClick)
 
         if (articlesState.value.error != null)
-            ErrorMessage(articlesState.value.error!!)
+            ErrorMessage(articlesState.value.error.toString())
         if (articlesState.value.articles.isNotEmpty())
             ArticlesListView(articlesViewModel.articlesState.value) {
                 articlesViewModel.getArticles(true)
@@ -83,8 +83,6 @@ private fun AppBar(
 
 @Composable
 fun ArticlesListView(state: ArticlesState, onSwipeToRefresh: () -> Unit) {
-
-
     SwipeRefresh(
         state = SwipeRefreshState(state.loading),
         onRefresh = {
