@@ -12,8 +12,8 @@ class ArticleUseCase(
     private val repository: ArticlesRepository
 ) {
 
-    suspend fun getArticles(): List<Article> {
-        val articlesRaw = repository.getArticles(false)
+    suspend fun getArticles(forceFetch: Boolean): List<Article> {
+        val articlesRaw = repository.getArticles(forceFetch)
         return mapArticles(articlesRaw)
     }
 

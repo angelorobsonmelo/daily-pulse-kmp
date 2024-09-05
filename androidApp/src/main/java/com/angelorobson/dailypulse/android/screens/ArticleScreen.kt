@@ -32,7 +32,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.angelorobson.dailypulse.articles.Article
+import com.angelorobson.dailypulse.articles.ArticlesState
 import com.angelorobson.dailypulse.articles.ArticlesViewModel
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.SwipeRefreshState
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -45,12 +48,12 @@ fun ArticlesScreen(
     Column {
         AppBar(onAboutButtonClick)
 
-        if (articlesState.value.loading)
-            Loader()
         if (articlesState.value.error != null)
             ErrorMessage(articlesState.value.error!!)
         if (articlesState.value.articles.isNotEmpty())
-            ArticlesListView(articlesViewModel.articlesState.value.articles)
+            ArticlesListView(articlesViewModel.articlesState.value) {
+                articlesViewModel.getArticles(true)
+            }
     }
 }
 
@@ -73,13 +76,22 @@ private fun AppBar(
 }
 
 @Composable
-fun ArticlesListView(articles: List<Article>) {
+fun ArticlesListView(state: ArticlesState, onSwipeToRefresh: () -> Unit) {
 
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(articles) { article ->
-            ArticleItemView(article = article)
+
+    SwipeRefresh(
+        state = SwipeRefreshState(state.loading),
+        onRefresh = {
+            onSwipeToRefresh()
+        }
+    ) {
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
+            items(state.articles) { article ->
+                ArticleItemView(article = article)
+            }
         }
     }
+
 }
 
 @Composable
@@ -107,20 +119,6 @@ fun ArticleItemView(article: Article) {
             modifier = Modifier.align(Alignment.End)
         )
         Spacer(modifier = Modifier.height(4.dp))
-    }
-}
-
-@Composable
-fun Loader() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        CircularProgressIndicator(
-            modifier = Modifier.width(64.dp),
-            color = MaterialTheme.colorScheme.surfaceVariant,
-            trackColor = MaterialTheme.colorScheme.secondary,
-        )
     }
 }
 
