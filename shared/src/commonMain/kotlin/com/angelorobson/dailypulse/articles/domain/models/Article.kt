@@ -1,4 +1,4 @@
-package com.angelorobson.dailypulse.articles
+package com.angelorobson.dailypulse.articles.domain.models
 
 data class Article(
     val title: String,

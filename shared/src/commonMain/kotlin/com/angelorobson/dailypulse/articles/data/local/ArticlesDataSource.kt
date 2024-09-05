@@ -1,13 +1,14 @@
-package com.angelorobson.dailypulse.articles
+package com.angelorobson.dailypulse.articles.data.local
 
+import com.angelorobson.dailypulse.articles.data.network.responses.ArticleRawResponse
 import com.angelorobson.dailypulse.db.DailyPulseDatabase
 
 class ArticlesDataSource(private val database: DailyPulseDatabase) {
 
-    fun getAllArticles(): List<ArticleRaw> =
+    fun getAllArticles(): List<ArticleRawResponse> =
         database.dailyPulseDatabaseQueries.selectAllArticles(::mapToArticleRaw).executeAsList()
 
-    fun insertArticles(articles: List<ArticleRaw>) {
+    fun insertArticles(articles: List<ArticleRawResponse>) {
         database.dailyPulseDatabaseQueries.transaction {
             articles.forEach { articleRaw ->
                 insertArticle(articleRaw)
@@ -18,7 +19,7 @@ class ArticlesDataSource(private val database: DailyPulseDatabase) {
     fun clearArticles() =
         database.dailyPulseDatabaseQueries.removeAllArticles()
 
-    private fun insertArticle(articleRaw: ArticleRaw) {
+    private fun insertArticle(articleRaw: ArticleRawResponse) {
         database.dailyPulseDatabaseQueries.insertArticle(
             articleRaw.title,
             articleRaw.desc,
@@ -32,8 +33,8 @@ class ArticlesDataSource(private val database: DailyPulseDatabase) {
         desc: String?,
         date: String,
         url: String?
-    ): ArticleRaw =
-        ArticleRaw(
+    ): ArticleRawResponse =
+        ArticleRawResponse(
             title,
             desc,
             date,

@@ -1,14 +1,10 @@
-package com.angelorobson.dailypulse.articles
+package com.angelorobson.dailypulse.articles.presentation
 
 import com.angelorobson.dailypulse.BaseViewModel
-import io.ktor.client.HttpClient
-import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.serialization.kotlinx.json.json
-import kotlinx.coroutines.delay
+import com.angelorobson.dailypulse.articles.domain.ArticleUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import kotlinx.serialization.json.Json
 
 class ArticlesViewModel(
     private val useCase: ArticleUseCase

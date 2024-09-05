@@ -1,4 +1,4 @@
-package com.angelorobson.dailypulse.articles
+package com.angelorobson.dailypulse.articles.data.network.responses
 
 
 import kotlinx.serialization.SerialName
@@ -11,5 +11,5 @@ data class ArticlesResponse(
     @SerialName("totalResults")
     val results: Int,
     @SerialName("articles")
-    val articles: List<ArticleRaw>
+    val articles: List<ArticleRawResponse>
 )

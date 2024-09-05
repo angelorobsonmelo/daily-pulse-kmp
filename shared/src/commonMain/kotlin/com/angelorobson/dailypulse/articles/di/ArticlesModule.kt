@@ -1,10 +1,10 @@
 package com.angelorobson.dailypulse.articles.di
 
-import com.angelorobson.dailypulse.articles.ArticleService
-import com.angelorobson.dailypulse.articles.ArticleUseCase
-import com.angelorobson.dailypulse.articles.ArticlesDataSource
-import com.angelorobson.dailypulse.articles.ArticlesRepository
-import com.angelorobson.dailypulse.articles.ArticlesViewModel
+import com.angelorobson.dailypulse.articles.data.network.ArticleService
+import com.angelorobson.dailypulse.articles.domain.ArticleUseCase
+import com.angelorobson.dailypulse.articles.data.local.ArticlesDataSource
+import com.angelorobson.dailypulse.articles.data.repositories.ArticlesRepository
+import com.angelorobson.dailypulse.articles.presentation.ArticlesViewModel
 import org.koin.dsl.module
 
 val articlesModule = module {

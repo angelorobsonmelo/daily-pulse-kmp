@@ -1,4 +1,6 @@
-package com.angelorobson.dailypulse.articles
+package com.angelorobson.dailypulse.articles.presentation
+
+import com.angelorobson.dailypulse.articles.domain.models.Article
 
 data class ArticlesState(
     val articles: List<Article> = emptyList(),

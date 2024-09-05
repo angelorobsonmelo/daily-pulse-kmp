@@ -1,5 +1,8 @@
-package com.angelorobson.dailypulse.articles
+package com.angelorobson.dailypulse.articles.domain
 
+import com.angelorobson.dailypulse.articles.data.network.responses.ArticleRawResponse
+import com.angelorobson.dailypulse.articles.data.repositories.ArticlesRepository
+import com.angelorobson.dailypulse.articles.domain.models.Article
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
@@ -17,7 +20,7 @@ class ArticleUseCase(
         return mapArticles(articlesRaw)
     }
 
-    private fun mapArticles(articlesRaw: List<ArticleRaw>): List<Article> = articlesRaw.map {
+    private fun mapArticles(articlesRaw: List<ArticleRawResponse>): List<Article> = articlesRaw.map {
         Article(
             title = it.title,
             desc = it.desc ?: "Click to find out more",

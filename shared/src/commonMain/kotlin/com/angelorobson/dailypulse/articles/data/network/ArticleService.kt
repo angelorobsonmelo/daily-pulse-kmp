@@ -1,5 +1,7 @@
-package com.angelorobson.dailypulse.articles
+package com.angelorobson.dailypulse.articles.data.network
 
+import com.angelorobson.dailypulse.articles.data.network.responses.ArticleRawResponse
+import com.angelorobson.dailypulse.articles.data.network.responses.ArticlesResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -12,7 +14,7 @@ class ArticleService(
     private val category = "business"
     private val apiKey = "2317a629fa1e4df4a42db58d2995f47f"
 
-    suspend fun fetchArticles(): List<ArticleRaw> {
+    suspend fun fetchArticles(): List<ArticleRawResponse> {
         val response: ArticlesResponse = httpClient.get("https://newsapi.org/v2/top-headlines?country=$country&category=$category&apiKey=$apiKey").body()
         return response.articles
     }

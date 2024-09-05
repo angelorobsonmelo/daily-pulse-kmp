@@ -1,10 +1,10 @@
-package com.angelorobson.dailypulse.articles
+package com.angelorobson.dailypulse.articles.data.network.responses
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ArticleRaw(
+data class ArticleRawResponse(
     @SerialName("title")
     val title: String,
     @SerialName("description")
