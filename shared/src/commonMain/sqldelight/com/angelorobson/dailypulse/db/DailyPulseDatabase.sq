@@ -1,8 +1,8 @@
 CREATE TABLE ArticleEntity (
     title TEXT NOT NULL,
-    desc TEXT,
+    desc TEXT NOT NULL,
     date TEXT NOT NULL,
-    imageUrl TEXT
+    imageUrl TEXT NOT NULL
 );
 
 insertArticle:

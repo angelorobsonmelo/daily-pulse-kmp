@@ -1,12 +1,13 @@
 package com.angelorobson.dailypulse.articles.domain.local
 
-import com.angelorobson.dailypulse.articles.data.network.responses.ArticleRawResponse
+import com.angelorobson.dailypulse.articles.domain.models.Article
+import com.angelorobson.dailypulse.db.ArticleEntity
 
 interface ArticlesLocalDataSource {
 
-    fun getAllArticles(): List<ArticleRawResponse>
+    fun getAllArticles(): List<ArticleEntity>
 
-    fun insertArticles(articles: List<ArticleRawResponse>)
+    fun insertArticles(articles: List<Article>)
 
     fun clearArticles()
 }

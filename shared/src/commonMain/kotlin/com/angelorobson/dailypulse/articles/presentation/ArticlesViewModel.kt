@@ -1,7 +1,7 @@
 package com.angelorobson.dailypulse.articles.presentation
 
 import com.angelorobson.dailypulse.BaseViewModel
-import com.angelorobson.dailypulse.articles.domain.ArticleUseCase
+import com.angelorobson.dailypulse.articles.domain.usecases.ArticleUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -22,7 +22,7 @@ class ArticlesViewModel(
         scope.launch {
             _articlesState.emit(ArticlesState(loading = true, articles = _articlesState.value.articles))
 
-            val fetchedArticles = useCase.getArticles(forceFetch)
+            val fetchedArticles = useCase(forceFetch)
 
             _articlesState.emit(ArticlesState(articles = fetchedArticles))
         }
