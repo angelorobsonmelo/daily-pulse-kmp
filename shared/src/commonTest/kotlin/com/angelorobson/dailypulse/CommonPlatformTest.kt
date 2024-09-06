@@ -8,7 +8,7 @@ class CommonGreetingTest {
     private val platform = Platform()
 
     @Test
-    fun testExample() {
+    fun shouldReturnPlatformInstanceNotNull() {
         assertNotNull(platform)
     }
 
