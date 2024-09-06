@@ -8,6 +8,8 @@ import org.kodein.mock.Fake
 import org.kodein.mock.Mock
 import org.kodein.mock.tests.TestsWithMocks
 import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -39,14 +41,16 @@ class ArticleRemoteDataSourceImplTest : TestsWithMocks() {
     }
 
     @Test
-    fun `fetchArticles should an error`() = runBlocking {
-        everySuspending { articlesApi.fetchArticles() } runs { error("Error ex") }
+    fun `fetchArticles should return an exception`() = runBlocking {
+        val errorMsg = "Api error"
+        everySuspending { articlesApi.fetchArticles() } runs { error(errorMsg) }
 
-        val list = remoteDataSource.fetchArticles()
 
-        verifyWithSuspend { articlesApi.fetchArticles() }
-        assertTrue(list.isEmpty())
-        assertFalse(list.isNotEmpty())
+        val ex = assertFailsWith<IllegalStateException> {
+            remoteDataSource.fetchArticles()
+        }
+
+        assertEquals(errorMsg, ex.message)
     }
 
 }

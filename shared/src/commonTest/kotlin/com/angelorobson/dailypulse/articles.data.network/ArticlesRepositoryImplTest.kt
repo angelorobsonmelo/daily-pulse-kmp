@@ -12,10 +12,12 @@ import com.angelorobson.dailypulse.db.ArticleEntity
 import kotlinx.coroutines.runBlocking
 import org.kodein.mock.Fake
 import org.kodein.mock.Mock
+import org.kodein.mock.Mocker
 import org.kodein.mock.tests.TestsWithMocks
 import kotlin.test.DefaultAsserter.assertEquals
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -78,12 +80,11 @@ class ArticlesRepositoryImplTest : TestsWithMocks() {
     fun `getLocalArticles should return entities error`() = runBlocking {
         every { localDataSource.getAllArticles() } runs { error("DB is not accessible") }
 
-        repository.getLocalArticles()
 
-        verify {
-            val ex = threw<IllegalStateException> { localDataSource.getAllArticles() }
-            assertEquals("DB is not accessible", ex.message)
+        val ex = assertFailsWith<IllegalStateException> {
+            repository.getLocalArticles()
         }
+        assertEquals("DB is not accessible", ex.message)
     }
 
     @Test
