@@ -30,6 +30,7 @@ class ArticleRemoteDataSourceImplTest : TestsWithMocks() {
     @Test
     fun `fetchArticles should call fetchArticles from articlesApi`() = runBlocking {
         everySuspending { articlesApi.fetchArticles() } returns listOf(response)
+
         val list = remoteDataSource.fetchArticles()
 
         verifyWithSuspend {  articlesApi.fetchArticles() }
