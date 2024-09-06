@@ -1,9 +1,8 @@
-package com.angelorobson.dailypulse.articles.data
+package com.angelorobson.dailypulse.articles.data.repositories
 
 import com.angelorobson.dailypulse.articles.data.local.mappers.ArticleEntityToDomainMapper
 import com.angelorobson.dailypulse.articles.data.network.mappers.ArticleResponseToDomainMapper
 import com.angelorobson.dailypulse.articles.data.network.responses.ArticleRawResponse
-import com.angelorobson.dailypulse.articles.data.repositories.ArticlesRepositoryImpl
 import com.angelorobson.dailypulse.articles.domain.local.ArticlesLocalDataSource
 import com.angelorobson.dailypulse.articles.domain.models.Article
 import com.angelorobson.dailypulse.articles.domain.network.ArticleRemoteDataSource
