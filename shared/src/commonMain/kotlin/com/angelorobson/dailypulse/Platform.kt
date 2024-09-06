@@ -1,6 +1,6 @@
 package com.angelorobson.dailypulse
 
-expect class Platform {
+expect class Platform() {
     val osName: String
     val osVersion: String
     val deviceModel: String

@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.touchlab.skie)
     kotlin("plugin.serialization") version "1.9.20"
     alias(libs.plugins.sqlDelight)
+    id("org.kodein.mock.mockmp") version "1.17.0"
 }
 
 kotlin {
@@ -73,4 +74,9 @@ sqldelight {
             packageName.set("com.angelorobson.dailypulse.db")
         }
     }
+}
+
+mockmp {
+    usesHelper = true
+    installWorkaround()
 }

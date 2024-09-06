@@ -1,7 +1,7 @@
 [versions]
-agp = "8.5.2"
+agp = "8.2.0"
 coilCompose = "2.5.0"
-kotlin = "2.0.0"
+kotlin = "1.9.22"
 compose = "1.6.8"
 compose-material3 = "1.2.1"
 androidx-activityCompose = "1.9.1"
@@ -55,7 +55,6 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 touchlab-skie = { id = "co.touchlab.skie", version.ref = "touchlabSkie" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
 
