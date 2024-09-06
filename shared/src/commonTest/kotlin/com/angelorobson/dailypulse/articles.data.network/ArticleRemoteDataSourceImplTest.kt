@@ -33,9 +33,20 @@ class ArticleRemoteDataSourceImplTest : TestsWithMocks() {
 
         val list = remoteDataSource.fetchArticles()
 
-        verifyWithSuspend {  articlesApi.fetchArticles() }
+        verifyWithSuspend { articlesApi.fetchArticles() }
         assertFalse(list.isEmpty())
         assertTrue(list.isNotEmpty())
+    }
+
+    @Test
+    fun `fetchArticles should an error`() = runBlocking {
+        everySuspending { articlesApi.fetchArticles() } runs { error("Error ex") }
+
+        val list = remoteDataSource.fetchArticles()
+
+        verifyWithSuspend { articlesApi.fetchArticles() }
+        assertTrue(list.isEmpty())
+        assertFalse(list.isNotEmpty())
     }
 
 }
