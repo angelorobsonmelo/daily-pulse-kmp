@@ -17,6 +17,7 @@ accompanistSwiperefresh = "0.24.13-rc"
 androidx-test-junit = "1.1.5"
 coroutines = "1.8.1"
 robolectric = "4.10.3"
+turbine = "1.0.0"
 
 
 
@@ -40,6 +41,9 @@ ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktorClient" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktorClient" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktorClient" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktorClient" }
+ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktorClient" }
+
 
 
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
@@ -57,6 +61,7 @@ coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", ve
 roboelectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 sqlDelight-jvm = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqlDelight" }
 
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 
 [plugins]
@@ -76,4 +81,14 @@ shared-androidTest = [
     "roboelectric",
     "sqlDelight-jvm"
 ]
+
+shared-commonTest = [
+    "kotlin-test",
+    "turbine",
+    "coroutines-test",
+    "ktor-client-mock"
+]
+
+ktor-common = ["ktor-client-core", "ktor-client-logging", "ktor-serialization-kotlinx-json", "ktor-client-content-negotiation"]
+
 

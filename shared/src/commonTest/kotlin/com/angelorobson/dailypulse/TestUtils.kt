@@ -1,20 +1,19 @@
-package com.angelorobson.dailypulse.di
+package com.angelorobson.dailypulse
 
 import io.ktor.client.HttpClient
+import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-import org.koin.dsl.module
 
-import io.ktor.client.plugins.logging.Logger as KtorLogger
+data object TestUtils {
 
-
-val networkModule = module {
-    single<HttpClient> {
-        HttpClient {
+    fun getClient(engine: MockEngine): HttpClient {
+        return HttpClient(engine) {
             expectSuccess = true
             install(ContentNegotiation) {
                 json(Json {
@@ -24,7 +23,7 @@ val networkModule = module {
                 })
             }
             install(Logging) {
-                logger = object : KtorLogger {
+                logger = object : Logger {
                     override fun log(message: String) {
                         println(message)
                     }

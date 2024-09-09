@@ -4,6 +4,7 @@ import com.angelorobson.dailypulse.articles.data.network.responses.ArticleRawRes
 import com.angelorobson.dailypulse.articles.domain.network.ArticleRemoteDataSource
 import com.angelorobson.dailypulse.articles.domain.network.api.ArticlesApi
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.kodein.mock.Fake
 import org.kodein.mock.Mock
 import org.kodein.mock.tests.TestsWithMocks
@@ -30,7 +31,7 @@ class ArticleRemoteDataSourceImplTest : TestsWithMocks() {
 
 
     @Test
-    fun `fetchArticles should call fetchArticles from articlesApi`() = runBlocking {
+    fun `fetchArticles should call fetchArticles from articlesApi`() = runTest {
         everySuspending { articlesApi.fetchArticles() } returns listOf(response)
 
         val list = remoteDataSource.fetchArticles()
