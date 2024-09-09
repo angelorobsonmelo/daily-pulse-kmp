@@ -5,12 +5,14 @@ import com.angelorobson.dailypulse.articles.domain.models.Article
 import com.angelorobson.dailypulse.articles.domain.usecases.ArticleUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.kodein.mock.Mock
 import org.kodein.mock.tests.TestsWithMocks
+import kotlin.test.AfterTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -29,6 +31,11 @@ class ArticlesViewModelTest : TestsWithMocks() {
 
     private val viewModel: ArticlesViewModel by withMocks {
         ArticlesViewModel(useCase = articleUseCase)
+    }
+
+    @AfterTest
+    fun tearDown() {
+        viewModel.scope.cancel()
     }
 
 
