@@ -4,6 +4,7 @@ import com.angelorobson.dailypulse.BaseViewModel
 import com.angelorobson.dailypulse.articles.domain.usecases.ArticleUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -15,11 +16,7 @@ class ArticlesViewModel(
     private val _articlesState: MutableStateFlow<ArticlesState> =
         MutableStateFlow(ArticlesState(loading = true))
 
-    val articlesState: StateFlow<ArticlesState> get() = _articlesState
-
-    init {
-        getArticles()
-    }
+    val articlesState: StateFlow<ArticlesState> get() = _articlesState.asStateFlow()
 
     fun getArticles(forceFetch: Boolean = false) {
         scope.launch {

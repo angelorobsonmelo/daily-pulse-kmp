@@ -6,13 +6,11 @@ import kotlinx.coroutines.test.runTest
 import org.kodein.mock.Fake
 import org.kodein.mock.Mock
 import org.kodein.mock.tests.TestsWithMocks
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
-class ArticleUseCaseImpl : TestsWithMocks() {
+class ArticleUseCaseImplTest : TestsWithMocks() {
 
-    private lateinit var articleUseCase: ArticleUseCase
 
     @Mock
     lateinit var repository: ArticlesRepository
@@ -22,9 +20,8 @@ class ArticleUseCaseImpl : TestsWithMocks() {
 
     override fun setUpMocks() = injectMocks(mocker)
 
-    @BeforeTest
-    fun setUp() {
-        articleUseCase = ArticleUseCase(repository)
+    private val useCase: ArticleUseCase by withMocks {
+        ArticleUseCaseImpl(repository)
     }
 
     @Test
@@ -32,7 +29,7 @@ class ArticleUseCaseImpl : TestsWithMocks() {
         runTest {
             everySuspending { repository.getLocalArticles() } returns listOf(article)
 
-            articleUseCase(false)
+            useCase(false)
                 .collect {
                     assertTrue(it.isNotEmpty())
                 }
@@ -45,7 +42,7 @@ class ArticleUseCaseImpl : TestsWithMocks() {
             everySuspending { repository.clearLocalArticles() } returns Unit
             everySuspending { repository.createArticles(listOf(article)) } returns Unit
 
-            articleUseCase(true)
+            useCase(true)
                 .collect {
                     assertTrue(it.isNotEmpty())
                 }
@@ -66,7 +63,7 @@ class ArticleUseCaseImpl : TestsWithMocks() {
             everySuspending { repository.fetchRemoteArticles() } returns list
             everySuspending { repository.createArticles(isEqual(list)) } returns Unit
 
-            articleUseCase(false)
+            useCase(false)
                 .collect {
                     assertTrue(it.isNotEmpty())
                 }
