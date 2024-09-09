@@ -15,6 +15,7 @@ class ArticleUseCase(
             val fetchedArticles = repository.fetchRemoteArticles()
             repository.createArticles(fetchedArticles)
             emit(fetchedArticles)
+            return@flow
         }
 
         val localArticles = repository.getLocalArticles()
@@ -23,6 +24,7 @@ class ArticleUseCase(
             val fetchedArticles = repository.fetchRemoteArticles()
             repository.createArticles(fetchedArticles)
             emit(fetchedArticles)
+            return@flow
         }
 
         emit(localArticles)
