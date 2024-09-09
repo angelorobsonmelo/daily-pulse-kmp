@@ -19,6 +19,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -43,52 +44,46 @@ fun ArticlesScreen(
     articlesViewModel: ArticlesViewModel = getViewModel(),
 ) {
     val articlesState = articlesViewModel.articlesState.collectAsStateWithLifecycle()
+    LaunchedEffect(Unit) {
+        articlesViewModel.getArticles()
+    }
 
     Column {
         AppBar(onAboutButtonClick, onSourcesButtonClick)
 
-        if (articlesState.value.error != null)
-            ErrorMessage(articlesState.value.error.toString())
-        if (articlesState.value.articles.isNotEmpty())
-            ArticlesListView(articlesViewModel.articlesState.value) {
-                articlesViewModel.getArticles(true)
-            }
+        if (articlesState.value.error != null) ErrorMessage(articlesState.value.error.toString())
+        if (articlesState.value.articles.isNotEmpty()) ArticlesListView(articlesViewModel.articlesState.value) {
+            articlesViewModel.getArticles(true)
+        }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun AppBar(
-    onAboutButtonClick: () -> Unit,
-    onSourcesButtonClick: () -> Unit
+    onAboutButtonClick: () -> Unit, onSourcesButtonClick: () -> Unit
 ) {
-    TopAppBar(
-        title = { Text(text = "Articles") },
-        actions = {
-            IconButton(onClick = onSourcesButtonClick) {
-                Icon(
-                    imageVector = Icons.Outlined.List,
-                    contentDescription = "Sources Button",
-                )
-            }
-            IconButton(onClick = onAboutButtonClick) {
-                Icon(
-                    imageVector = Icons.Outlined.Info,
-                    contentDescription = "About Device Button",
-                )
-            }
+    TopAppBar(title = { Text(text = "Articles") }, actions = {
+        IconButton(onClick = onSourcesButtonClick) {
+            Icon(
+                imageVector = Icons.Outlined.List,
+                contentDescription = "Sources Button",
+            )
         }
-    )
+        IconButton(onClick = onAboutButtonClick) {
+            Icon(
+                imageVector = Icons.Outlined.Info,
+                contentDescription = "About Device Button",
+            )
+        }
+    })
 }
 
 @Composable
 fun ArticlesListView(state: ArticlesState, onSwipeToRefresh: () -> Unit) {
-    SwipeRefresh(
-        state = SwipeRefreshState(state.loading),
-        onRefresh = {
-            onSwipeToRefresh()
-        }
-    ) {
+    SwipeRefresh(state = SwipeRefreshState(state.loading), onRefresh = {
+        onSwipeToRefresh()
+    }) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(state.articles) { article ->
                 ArticleItemView(article = article)
@@ -106,13 +101,11 @@ fun ArticleItemView(article: Article) {
             .padding(16.dp)
     ) {
         AsyncImage(
-            model = article.imageUrl,
-            contentDescription = null
+            model = article.imageUrl, contentDescription = null
         )
         Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = article.title,
-            style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 22.sp)
+            text = article.title, style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 22.sp)
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(text = article.desc)
@@ -129,12 +122,10 @@ fun ArticleItemView(article: Article) {
 @Composable
 fun ErrorMessage(message: String) {
     Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
     ) {
         Text(
-            text = message,
-            style = TextStyle(fontSize = 28.sp, textAlign = TextAlign.Center)
+            text = message, style = TextStyle(fontSize = 28.sp, textAlign = TextAlign.Center)
         )
     }
 }

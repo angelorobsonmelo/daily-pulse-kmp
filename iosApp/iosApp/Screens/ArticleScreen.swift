@@ -61,6 +61,7 @@ struct ArticlesScreen: View {
             
         }.onAppear{
             self.viewModel.startObserving()
+            self.viewModel.articlesViewModel.getArticles(forceFetch: false)
         }
     }
 }
