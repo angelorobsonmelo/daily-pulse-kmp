@@ -24,6 +24,7 @@ kotlin {
         it.binaries.framework {
             baseName = "shared"
             isStatic = true
+            linkerOpts("-lsqlite3")
         }
     }
 
@@ -42,6 +43,10 @@ kotlin {
            implementation(libs.androidx.lifecycle.viewmodel.ktx)
             implementation(libs.ktor.client.android)
             implementation(libs.sql.android.driver)
+        }
+
+        getByName("androidUnitTest").dependencies {
+            implementation(libs.bundles.shared.androidTest)
         }
 
         iosMain.dependencies {

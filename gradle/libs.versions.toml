@@ -14,6 +14,10 @@ kotlinxDatetime = "0.6.1"
 koin = "3.4.3"
 sqlDelight = "2.0.0"
 accompanistSwiperefresh = "0.24.13-rc"
+androidx-test-junit = "1.1.5"
+coroutines = "1.8.1"
+robolectric = "4.10.3"
+
 
 
 [libraries]
@@ -48,6 +52,12 @@ sql-android-driver = { module = "app.cash.sqldelight:android-driver", version.re
 
 accompanist-swiperefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanistSwiperefresh" }
 
+androidx-test-junit = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx-test-junit" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+roboelectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+sqlDelight-jvm = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqlDelight" }
+
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -57,4 +67,13 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 touchlab-skie = { id = "co.touchlab.skie", version.ref = "touchlabSkie" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
+
+
+[bundles]
+shared-androidTest = [
+    "androidx-test-junit",
+    "coroutines-test",
+    "roboelectric",
+    "sqlDelight-jvm"
+]
 
