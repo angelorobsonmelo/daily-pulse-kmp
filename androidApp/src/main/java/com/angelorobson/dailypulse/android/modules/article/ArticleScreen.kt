@@ -13,7 +13,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.angelorobson.dailypulse.android.modules.article.component.ArticlesContent
+import com.angelorobson.dailypulse.android.modules.article.components.ArticlesContent
 import com.angelorobson.dailypulse.articles.presentation.ArticlesViewModel
 import org.koin.androidx.compose.getViewModel
 

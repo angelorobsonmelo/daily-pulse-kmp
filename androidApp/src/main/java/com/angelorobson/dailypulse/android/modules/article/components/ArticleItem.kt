@@ -1,4 +1,4 @@
-package com.angelorobson.dailypulse.android.modules.article.component
+package com.angelorobson.dailypulse.android.modules.article.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
