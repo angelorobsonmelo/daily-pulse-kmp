@@ -2,27 +2,27 @@
 This is an example project using Kotlin Multiplatform Mobile (KMP) to share code between Android and iOS. The project was developed with a focus on scalability and implementing best development practices.
 
 ## Architecture
-* Clean Architecture: Following Clean Architecture principles, the code is modularized into layers, facilitating maintenance and testing.
-* SOLID: We implemented SOLID principles to ensure clean, easily extensible, and modifiable code.
-* Dependency Injection: We used Koin to simplify dependency injection, promoting greater flexibility.
+* **Clean Architecture:** Following Clean Architecture principles, the code is modularized into layers, facilitating maintenance and testing.
+* **SOLID:** We implemented SOLID principles to ensure clean, easily extensible, and modifiable code.
+* **Dependency Injection:** We used Koin to simplify dependency injection, promoting greater flexibility.
 
 ## Key Libraries
-* Kotlin Multiplatform (KMP): Shared code between Android and iOS.
-* Coil Compose: Used for efficient image loading in Compose.
-* Jetpack Compose: Declarative framework to build modern UIs on Android.
-* Swift UI: Declarative framework to build modern UIs on iOS.
-* SQLDelight: Multiplatform database management with SQL support.
-* Ktor: Used for making network calls on both platforms.
-* Koin: Multiplatform dependency injection framework.
-* Kotlinx Coroutines: Asynchronous programming in Kotlin.
-* Kotlinx Serialization: JSON data serialization.
-* BuildKonfig: Stores sensitive settings, such as keys, without exposing them in the repository.
+* **Kotlin Multiplatform (KMP):** Shared code between Android and iOS.
+* **Coil Compose:** Used for efficient image loading in Compose.
+* **Jetpack Compose:** Declarative framework to build modern UIs on Android.
+* **Swift UI:** Declarative framework to build modern UIs on iOS.
+* **SQLDelight:** Multiplatform database management with SQL support.
+* **Ktor:** Used for making network calls on both platforms.
+* **Koin:** Multiplatform dependency injection framework.
+* **Kotlinx Coroutines:** Asynchronous programming in Kotlin.
+* **Kotlinx Serialization:** JSON data serialization.
+* **BuildKonfig:** Stores sensitive settings, such as keys, without exposing them in the repository.
 
 ## Tests
-* Turbine: Testing flows with Flow.
-* Robolectric: For Android UI tests without an emulator.
-* MockMP: Used for creating mocks in multiplatform unit tests.
-* Kotlinx Coroutines Test: Facilitates testing of asynchronous coroutines.
+* **Turbine:** Testing flows with Flow.
+* **Robolectric:** For Android UI tests without an emulator.
+* **MockMP:** Used for creating mocks in multiplatform unit tests.
+* **Kotlinx Coroutines Test:** Facilitates testing of asynchronous coroutines.
 * All unit tests were implemented within the shared module, ensuring complete coverage of shared code between platforms.
 
 ## Scalability
