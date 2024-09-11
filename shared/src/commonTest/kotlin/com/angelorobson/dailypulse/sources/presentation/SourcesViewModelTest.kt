@@ -1,8 +1,8 @@
-package com.angelorobson.dailypulse.articles.presentation
+package com.angelorobson.dailypulse.sources.presentation
 
 import app.cash.turbine.test
-import com.angelorobson.dailypulse.articles.domain.models.Article
-import com.angelorobson.dailypulse.articles.domain.usecases.ArticleUseCase
+import com.angelorobson.dailypulse.sources.domain.models.Source
+import com.angelorobson.dailypulse.sources.domain.usecases.SourcesUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
@@ -23,18 +23,18 @@ import kotlin.test.assertTrue
 
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class ArticlesViewModelTest : TestsWithMocks() {
+class SourcesViewModelTest : TestsWithMocks() {
 
     @Mock
-    lateinit var articleUseCase: ArticleUseCase
+    lateinit var sourcesUseCase: SourcesUseCase
 
     @Fake
-    lateinit var article: Article
+    lateinit var source: Source
 
     override fun setUpMocks() = injectMocks(mocker)
 
-    private val viewModel: ArticlesViewModel by withMocks {
-        ArticlesViewModel(useCase = articleUseCase)
+    private val viewModel: SourcesViewModel by withMocks {
+        SourcesViewModel(useCase = sourcesUseCase)
     }
 
     @AfterTest
@@ -42,46 +42,43 @@ class ArticlesViewModelTest : TestsWithMocks() {
         viewModel.scope.cancel()
     }
 
-
     @Test
-    fun `getArticles should call useCase successfully`() = runTest {
+    fun `getSources should call useCase successfully`() = runTest {
         viewModel.scope = CoroutineScope(UnconfinedTestDispatcher())
 
-        everySuspending { articleUseCase(isAny()) } returns flowOf(listOf(article))
+        everySuspending { sourcesUseCase() } returns flowOf(listOf(source))
 
-        viewModel.getArticles()
+        viewModel.getSources()
 
-        viewModel.articlesState.test {
+        viewModel.sourcesState.test {
             val state = awaitItem()
 
             assertFalse(state.loading)
             assertNull(state.error)
-            assertTrue(state.articles.isNotEmpty())
+            assertTrue(state.sources.isNotEmpty())
         }
     }
 
     @Test
-    fun `getArticles should call useCase with error`() = runTest {
+    fun `getSources should call useCase and return error`() = runTest {
         val errorMsg = "Error Ex"
+
         viewModel.scope = CoroutineScope(UnconfinedTestDispatcher())
 
-        everySuspending { articleUseCase(isAny()) } returns callbackFlow {
+        everySuspending { sourcesUseCase() }  returns callbackFlow {
             throw Exception(errorMsg)
         }
 
-        viewModel.getArticles()
+        viewModel.getSources()
 
-        viewModel.articlesState.test {
+        viewModel.sourcesState.test {
             val state = awaitItem()
 
-            assertFalse(state.articles.isNotEmpty())
+            assertFalse(state.sources.isNotEmpty())
             assertFalse(state.loading)
             assertNotNull(state.error)
             assertEquals(errorMsg, state.error)
         }
     }
 
-
 }
-
-
