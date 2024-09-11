@@ -35,23 +35,23 @@ fun AppNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screens.ARTICLES.route,
+        startDestination = Screens.Articles,
         modifier = modifier,
     ) {
-        composable(Screens.ARTICLES.route) {
+        composable<Screens.Articles> {
             ArticlesScreen(
-                onAboutButtonClick = { navController.navigate(Screens.ABOUT_DEVICE.route) },
-                onSourcesButtonClick = { navController.navigate(Screens.SOURCES.route) }
+                onAboutButtonClick = { navController.navigate(Screens.AboutDevice) },
+                onSourcesButtonClick = { navController.navigate(Screens.Sources) }
             )
         }
 
-        composable(Screens.SOURCES.route) {
+        composable<Screens.Sources> {
             SourcesScreen(
                 onUpButtonClick = { navController.popBackStack() }
             )
         }
 
-        composable(Screens.ABOUT_DEVICE.route) {
+        composable<Screens.AboutDevice> {
             AboutScreen(
                 onUpButtonClick = { navController.popBackStack() }
             )

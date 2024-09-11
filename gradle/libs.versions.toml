@@ -2,23 +2,25 @@
 agp = "8.2.0"
 coilCompose = "2.5.0"
 kotlin = "1.9.22"
-compose = "1.6.8"
+compose = "1.7.1"
 compose-material3 = "1.2.1"
 androidx-activityCompose = "1.9.1"
 kotlinxCoroutinesCore = "1.8.1"
-navigationCompose = "2.7.7"
+navigationCompose = "2.8.0"
 viewmodel = "2.8.4"
 touchlabSkie = "0.8.2"
 ktorClient = "2.3.5"
 kotlinxDatetime = "0.6.1"
 koin = "3.4.3"
 sqlDelight = "2.0.0"
-accompanistSwiperefresh = "0.24.13-rc"
-androidx-test-junit = "1.1.5"
+accompanistSwiperefresh = "0.30.1"
+androidx-test-junit = "1.2.1"
 robolectric = "4.10.3"
 turbine = "1.0.0"
 mockmp = "1.17.0"
 buildkonfig = "0.15.2"
+serializationJson = "1.6.3"
+
 
 
 [libraries]
@@ -66,6 +68,9 @@ sqlDelight-jvm = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "
 
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serializationJson"}
+
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -78,7 +83,6 @@ sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
 mockmp = { id = "org.kodein.mock.mockmp", version.ref = "mockmp" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
-
 
 [bundles]
 shared-androidTest = [

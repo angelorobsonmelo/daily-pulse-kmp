@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -51,6 +52,8 @@ dependencies {
     implementation(libs.koin.androidx.compose)
     implementation(libs.accompanist.swiperefresh)
     implementation(libs.androidx.lifecycle.compose)
+    implementation(libs.kotlinx.serialization.json)
+
 
     debugImplementation(libs.compose.ui.tooling)
 }
