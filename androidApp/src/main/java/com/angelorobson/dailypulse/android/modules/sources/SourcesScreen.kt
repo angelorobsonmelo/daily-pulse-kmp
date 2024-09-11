@@ -1,4 +1,4 @@
-package com.angelorobson.dailypulse.android.screens
+package com.angelorobson.dailypulse.android.modules.sources
 
 
 import androidx.compose.foundation.layout.Column
@@ -18,7 +18,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,8 +25,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.angelorobson.dailypulse.android.modules.article.ErrorMessage
 import com.angelorobson.dailypulse.sources.domain.models.Source
 import com.angelorobson.dailypulse.sources.presentation.SourcesState
 import com.angelorobson.dailypulse.sources.presentation.SourcesViewModel
@@ -38,7 +39,7 @@ fun SourcesScreen(
     viewModel: SourcesViewModel = getViewModel(),
     onUpButtonClick: () -> Unit
 ) {
-    val articlesState = viewModel.sourcesState.collectAsStateWithLifecycle()
+    val articlesState by viewModel.sourcesState.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
         viewModel.getSources()
@@ -47,8 +48,8 @@ fun SourcesScreen(
     Column {
         AppBar(onUpButtonClick)
 
-        if (articlesState.value.error != null)
-            ErrorMessage(articlesState.value.error!!)
+        if (articlesState.error != null)
+            ErrorMessage(articlesState.error!!)
 
         SourcesListView(articlesState)
     }
@@ -73,10 +74,10 @@ private fun AppBar(
 }
 
 @Composable
-fun SourcesListView(state: State<SourcesState>) {
+fun SourcesListView(state: SourcesState) {
 
     LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(state.value.sources) { source ->
+        items(state.sources) { source ->
             SourceItemView(source = source)
         }
     }

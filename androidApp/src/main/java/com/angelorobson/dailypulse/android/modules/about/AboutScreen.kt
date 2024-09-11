@@ -1,4 +1,4 @@
-package com.angelorobson.dailypulse.android.screens
+package com.angelorobson.dailypulse.android.modules.about
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

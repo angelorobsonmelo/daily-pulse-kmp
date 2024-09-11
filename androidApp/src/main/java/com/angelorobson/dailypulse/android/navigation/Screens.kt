@@ -1,4 +1,4 @@
-package com.angelorobson.dailypulse.android.screens
+package com.angelorobson.dailypulse.android.navigation
 
 import kotlinx.serialization.Serializable
 
