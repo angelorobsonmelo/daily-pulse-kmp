@@ -17,7 +17,8 @@ accompanistSwiperefresh = "0.24.13-rc"
 androidx-test-junit = "1.1.5"
 robolectric = "4.10.3"
 turbine = "1.0.0"
-
+mockmp = "1.17.0"
+buildkonfig = "0.15.2"
 
 
 [libraries]
@@ -74,6 +75,9 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 touchlab-skie = { id = "co.touchlab.skie", version.ref = "touchlabSkie" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
+mockmp = { id = "org.kodein.mock.mockmp", version.ref = "mockmp" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
 
 
 [bundles]

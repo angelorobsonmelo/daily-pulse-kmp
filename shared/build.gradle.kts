@@ -1,10 +1,15 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+import com.codingfeline.buildkonfig.compiler.FieldSpec
+import kotlinx.serialization.descriptors.PrimitiveKind
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.touchlab.skie)
-    kotlin("plugin.serialization") version "1.9.20"
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.sqlDelight)
-    id("org.kodein.mock.mockmp") version "1.17.0"
+    alias(libs.plugins.mockmp)
+    alias(libs.plugins.buildkonfig)
 }
 
 kotlin {
@@ -82,4 +87,14 @@ sqldelight {
 mockmp {
     usesHelper = true
     installWorkaround()
+}
+
+buildkonfig {
+    packageName = "com.angelorobson.dailypulse"
+
+    defaultConfigs {
+        val apiKey: String = gradleLocalProperties(rootDir).getProperty("API_KEY")
+
+        buildConfigField(FieldSpec.Type.STRING, "API_KEY", apiKey)
+    }
 }
