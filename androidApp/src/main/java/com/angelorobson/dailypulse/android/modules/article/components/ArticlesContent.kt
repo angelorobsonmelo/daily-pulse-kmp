@@ -2,7 +2,7 @@ package com.angelorobson.dailypulse.android.modules.article.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
-import com.angelorobson.dailypulse.android.modules.article.ErrorMessage
+import com.angelorobson.dailypulse.android.commom.ErrorMessage
 import com.angelorobson.dailypulse.articles.presentation.ArticlesState
 
 @Composable
