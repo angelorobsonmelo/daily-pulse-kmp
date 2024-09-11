@@ -1,8 +1,7 @@
-package com.angelorobson.dailypulse.articles.data.network.api
+package com.angelorobson.dailypulse.sources.data.network.api
 
-import com.angelorobson.dailypulse.TestUtils
 import com.angelorobson.dailypulse.TestUtils.getClient
-import com.angelorobson.dailypulse.TestUtils.newsJsonResponseBody
+import com.angelorobson.dailypulse.TestUtils.sourcesJsonResponseBody
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
 import io.ktor.http.ContentType
@@ -13,15 +12,13 @@ import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-
-class ArticlesApiImplTest {
-
+class SourcesApiImplTest {
 
     @Test
-    fun `fetchArticles should call fetchArticles from articlesApi`() = runTest {
+    fun `fetchSources should return a list of Sources`() = runTest {
         val mockEngine = MockEngine {
             respond(
-                content = newsJsonResponseBody(),
+                content = sourcesJsonResponseBody(),
                 headers = headersOf(
                     HttpHeaders.ContentType,
                     ContentType.Application.Json.toString()
@@ -31,13 +28,11 @@ class ArticlesApiImplTest {
 
         val client = getClient(engine = mockEngine)
 
-        val articlesApi = ArticlesApiImpl(client)
+        val api = SourcesApiImpl(client)
 
-        val articles = articlesApi.fetchArticles()
+        val sources = api.fetchSources()
 
-        assertFalse(articles.isEmpty())
-        assertTrue(articles.isNotEmpty())
+        assertFalse(sources.isEmpty())
+        assertTrue(sources.isNotEmpty())
     }
-
-
 }

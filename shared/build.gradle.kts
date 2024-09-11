@@ -1,6 +1,5 @@
 import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import com.codingfeline.buildkonfig.compiler.FieldSpec
-import kotlinx.serialization.descriptors.PrimitiveKind
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
