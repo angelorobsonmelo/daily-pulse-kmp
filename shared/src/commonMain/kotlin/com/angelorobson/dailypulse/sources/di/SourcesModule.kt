@@ -11,6 +11,7 @@ import com.angelorobson.dailypulse.sources.domain.network.SourcesRemoteDataSourc
 import com.angelorobson.dailypulse.sources.domain.network.api.SourceApi
 import com.angelorobson.dailypulse.sources.domain.repositories.SourcesRepository
 import com.angelorobson.dailypulse.sources.domain.usecases.SourcesUseCase
+import com.angelorobson.dailypulse.sources.domain.usecases.impl.SourcesUseCaseImpl
 import com.angelorobson.dailypulse.sources.presentation.SourcesViewModel
 import org.koin.dsl.module
 
@@ -24,6 +25,6 @@ val sourcesModule = module {
     single<SourcesRemoteDataSource> { SourcesRemoteDataSourceImpl(get()) }
     single<SourcesLocalDataSource> { SourcesLocalDataSourceImpl(get()) }
     single<SourcesRepository> { SourcesRepositoryImpl(get(), get(), get(), get()) }
-    single<SourcesUseCase> { SourcesUseCase(get()) }
+    single<SourcesUseCase> { SourcesUseCaseImpl(get()) }
     single<SourcesViewModel> { SourcesViewModel(get()) }
 }

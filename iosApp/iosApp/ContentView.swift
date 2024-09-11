@@ -20,7 +20,7 @@ struct ContentView: View {
                             Label("Sources", systemImage: "list.bullet.rectangle").labelStyle(.titleAndIcon)
                         }
                         .popover(isPresented: $shouldOpenSources) {
-                            SourcesScreen(viewModel: .init())
+                            SourcesScreen(viewModelWrapper: .init())
                          }
                         }
                     ToolbarItem {

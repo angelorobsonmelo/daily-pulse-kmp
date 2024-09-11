@@ -1,7 +1,7 @@
 package com.angelorobson.dailypulse.articles.di
 
 import com.angelorobson.dailypulse.articles.data.network.ArticleRemoteDataSourceImpl
-import com.angelorobson.dailypulse.articles.domain.usecases.ArticleUseCaseImpl
+import com.angelorobson.dailypulse.articles.domain.usecases.impl.ArticleUseCaseImpl
 import com.angelorobson.dailypulse.articles.data.local.ArticlesLocalDataSourceImpl
 import com.angelorobson.dailypulse.articles.data.local.mappers.ArticleEntityToDomainMapper
 import com.angelorobson.dailypulse.articles.data.mappers.ArticlesEntityMapper

@@ -2,19 +2,9 @@ package com.angelorobson.dailypulse.sources.domain.usecases
 
 import com.angelorobson.dailypulse.sources.domain.models.Source
 import com.angelorobson.dailypulse.sources.domain.repositories.SourcesRepository
+import kotlinx.coroutines.flow.Flow
 
-class SourcesUseCase(
-    private val repository: SourcesRepository,
-) {
+interface SourcesUseCase {
 
-     suspend operator fun invoke(): List<Source> {
-        val sourcesDb = repository.getLocalSources()
-        if (sourcesDb.isEmpty()) {
-            repository.clearLocalSources()
-            val remoteSources = repository.fetchRemoteSources()
-            repository.createSources(remoteSources)
-            return remoteSources
-        }
-        return sourcesDb
-    }
+    suspend operator fun invoke(): Flow<List<Source>>
 }

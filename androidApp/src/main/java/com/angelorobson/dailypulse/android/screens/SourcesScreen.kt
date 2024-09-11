@@ -17,6 +17,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.State
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.angelorobson.dailypulse.sources.domain.models.Source
 import com.angelorobson.dailypulse.sources.presentation.SourcesState
 import com.angelorobson.dailypulse.sources.presentation.SourcesViewModel
@@ -36,7 +38,11 @@ fun SourcesScreen(
     viewModel: SourcesViewModel = getViewModel(),
     onUpButtonClick: () -> Unit
 ) {
-    val articlesState = viewModel.sourcesState.collectAsState()
+    val articlesState = viewModel.sourcesState.collectAsStateWithLifecycle()
+
+    LaunchedEffect(Unit) {
+        viewModel.getSources()
+    }
 
     Column {
         AppBar(onUpButtonClick)

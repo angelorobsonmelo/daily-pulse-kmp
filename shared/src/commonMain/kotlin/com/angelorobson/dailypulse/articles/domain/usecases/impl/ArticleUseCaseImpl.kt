@@ -1,7 +1,8 @@
-package com.angelorobson.dailypulse.articles.domain.usecases
+package com.angelorobson.dailypulse.articles.domain.usecases.impl
 
 import com.angelorobson.dailypulse.articles.domain.models.Article
 import com.angelorobson.dailypulse.articles.domain.repositories.ArticlesRepository
+import com.angelorobson.dailypulse.articles.domain.usecases.ArticleUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

@@ -2,6 +2,7 @@ package com.angelorobson.dailypulse.articles.domain.usecases
 
 import com.angelorobson.dailypulse.articles.domain.models.Article
 import com.angelorobson.dailypulse.articles.domain.repositories.ArticlesRepository
+import com.angelorobson.dailypulse.articles.domain.usecases.impl.ArticleUseCaseImpl
 import kotlinx.coroutines.test.runTest
 import org.kodein.mock.Fake
 import org.kodein.mock.Mock

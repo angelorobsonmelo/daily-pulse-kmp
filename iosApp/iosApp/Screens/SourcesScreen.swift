@@ -37,31 +37,32 @@ struct SourcesScreen: View {
     @Environment(\.dismiss)
     private var dismiss
     
-    @ObservedObject private(set) var viewModel: SourcesScreen.SourcesViewModelWrapper
+    @ObservedObject private(set) var viewModelWrapper: SourcesScreen.SourcesViewModelWrapper
     
     var body: some View {
         NavigationStack {
             VStack {
                 
-                if let error = viewModel.sourcesState.error {
+                if let error = viewModelWrapper.sourcesState.error {
                     ErrorMessage(message: error)
                 }
                 
-                if viewModel.sourcesState.loading {
+                if viewModelWrapper.sourcesState.loading {
                     Loader()
                 }
                 
-                if !viewModel.sourcesState.sources.isEmpty {
+                if !viewModelWrapper.sourcesState.sources.isEmpty {
                     ScrollView {
                         LazyVStack(spacing: 10) {
-                            ForEach(viewModel.sourcesState.sources, id: \.self) { source in
+                            ForEach(viewModelWrapper.sourcesState.sources, id: \.self) { source in
                                 SourceItemView(name: source.name, desc: source.desc, origin: source.origin)
                             }
                         }
                     }
                 }
             }.onAppear{
-                self.viewModel.startObserving()
+                self.viewModelWrapper.startObserving()
+                self.viewModelWrapper.viewModel.getSources()
             }
             .navigationTitle("Sources")
             .toolbar {
