@@ -30,7 +30,7 @@ This project is designed to be easily scalable, allowing new functionalities and
 
 ## How to Install
  1. Clone the repository to your local machine
- 2. Obtain the API key from [News API](newsapi.org)
+ 2. Obtain the API key from [News API](https://newsapi.org)
  3. Create **API_KEY** variable in your `local.properties`
  ```kotlin
    API_KEY = {your_key} 
