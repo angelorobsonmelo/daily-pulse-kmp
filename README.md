@@ -25,7 +25,7 @@ This sample project uses Kotlin Multiplatform Mobile (KMP) to share code between
 * All unit tests were implemented within the shared module, ensuring complete coverage of shared code between platforms.
 
 ## Scalability
-This project is designed to be easily scalable, allowing new functionalities and modules to be added without compromising the existing architecture. The combination of Clean Architecture, SOLID principles, and multiplatform code with KMM is rare to find in a single project, making this an excellent starting point for robust projects.
+This project is designed to be easily scalable, allowing new functionalities and modules to be added without compromising the existing architecture. The combination of Clean Architecture, SOLID principles, and multiplatform code with KMP is rare to find in a single project, making this an excellent starting point for robust projects.
 
 
 ## How to Install
