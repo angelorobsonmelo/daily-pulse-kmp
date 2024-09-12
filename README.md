@@ -33,7 +33,7 @@ This project is designed to be easily scalable, allowing new functionalities and
  2. Obtain the API key from [News API](https://newsapi.org)
  3. Create **API_KEY** variable in your `local.properties`
  ```kotlin
-   API_KEY = {your_key} 
+   API_KEY = {your_API_key} 
 ```
 4. Open the project in Android Studio or your preferred IDE for KMM development and run the project on your preferred platform.
 
@@ -43,3 +43,13 @@ This project is designed to be easily scalable, allowing new functionalities and
 The UI/Framework layers reside in the native apps, while everything from the View Model up to Data layer is in the common KMP module.
 
 ![clean arch](https://github.com/user-attachments/assets/abc006e3-414f-4fa8-b9f2-a9cb69f42e91)
+
+## Demonstration
+### Android vs iOS
+
+<p float="left">
+
+ https://github.com/user-attachments/assets/145b97b8-f92c-4879-8444-d302b1bf66d4
+
+  https://github.com/user-attachments/assets/145b97b8-f92c-4879-8444-d302b1bf66d4
+</p>
