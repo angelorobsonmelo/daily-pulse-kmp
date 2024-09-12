@@ -1,5 +1,5 @@
 # KMP Sample Project
-This sample project uses Kotlin Multiplatform Mobile (KMP) to share code between Android and iOS. The project was developed with a focus on scalability and implementing best development practices.
+This sample project uses Kotlin Multiplatform(KMP) to share code between Android and iOS. The project was developed with a focus on scalability and implementing best development practices.
 
 ## Architecture
 * **Clean Architecture:** Following Clean Architecture principles, the code is modularized into layers, facilitating maintenance and testing.
@@ -25,7 +25,7 @@ This sample project uses Kotlin Multiplatform Mobile (KMP) to share code between
 * All unit tests were implemented within the shared module, ensuring complete coverage of shared code between platforms.
 
 ## Scalability
-This project is designed to be easily scalable, allowing new functionalities and modules to be added without compromising the existing architecture. The combination of Clean Architecture, SOLID principles, and multiplatform code with KMP is rare to find in a single project, making this an excellent starting point for robust projects.
+This project is designed to be easily scalable, allowing new functionalities and modules to be added without compromising the existing architecture. The combination of clean architecture, SOLID principles, and multiplatform code with KMP is rare in a single project, making this an excellent starting point for robust projects.
 
 
 ## How to Install
@@ -39,7 +39,7 @@ This project is designed to be easily scalable, allowing new functionalities and
 
 ## Architectural diagram
 
-The UI/Framework layers reside in the native apps, while everything from the View Model up to Data layer is in the common KMP module.
+The UI/Framework layers reside in the native apps, while everything from the View Model up to the Data layer is in the common KMP module.
 
 ![clean arch](https://github.com/user-attachments/assets/abc006e3-414f-4fa8-b9f2-a9cb69f42e91)
 
