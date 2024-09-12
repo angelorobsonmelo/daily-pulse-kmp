@@ -3,8 +3,8 @@ This project uses Kotlin Multiplatform(KMP) to share code between Android and iO
 
 ## Architecture
 * **Clean Architecture:** Following Clean Architecture principles, the code is modularized into layers, facilitating maintenance and testing.
-* **SOLID:** We implemented SOLID principles to ensure clean, easily extensible, and modifiable code.
-* **Dependency Injection:** We used Koin to simplify dependency injection, promoting greater flexibility.
+* **SOLID:** Following SOLID principles to ensure clean, easily extensible, and modifiable code.
+* **Dependency Injection:** Koin to simplify dependency injection, promoting greater flexibility.
 
 ## Key Libraries
 * **Kotlin Multiplatform (KMP):** Shared code between Android and iOS.
