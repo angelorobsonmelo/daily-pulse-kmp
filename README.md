@@ -1,5 +1,5 @@
-# KMP Sample Project
-This sample project uses Kotlin Multiplatform(KMP) to share code between Android and iOS. The project was developed with a focus on scalability and implementing best development practices.
+# KMP Daily Pulse News Project
+This project uses Kotlin Multiplatform(KMP) to share code between Android and iOS. The project was developed with a focus on scalability and implementing best development practices.
 
 ## Architecture
 * **Clean Architecture:** Following Clean Architecture principles, the code is modularized into layers, facilitating maintenance and testing.
