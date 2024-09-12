@@ -2,11 +2,11 @@ package com.angelorobson.dailypulse.articles.data.repositories
 
 import com.angelorobson.dailypulse.articles.data.local.mappers.ArticleEntityToDomainMapper
 import com.angelorobson.dailypulse.articles.data.network.mappers.ArticleResponseToDomainMapper
-import com.angelorobson.dailypulse.articles.data.network.responses.ArticleRawResponse
 import com.angelorobson.dailypulse.articles.domain.local.ArticlesLocalDataSource
-import com.angelorobson.dailypulse.articles.domain.models.Article
 import com.angelorobson.dailypulse.articles.domain.network.ArticleRemoteDataSource
 import com.angelorobson.dailypulse.articles.domain.repositories.ArticlesRepository
+import com.angelorobson.dailypulse.builders.ArticleBuilder
+import com.angelorobson.dailypulse.builders.ArticleRawResponseBuilder
 import com.angelorobson.dailypulse.db.ArticleEntity
 import kotlinx.coroutines.runBlocking
 import org.kodein.mock.Fake
@@ -33,24 +33,11 @@ class ArticlesRepositoryImplTest : TestsWithMocks() {
     lateinit var entity: ArticleEntity
 
 
-    private val articles = listOf(
-        Article(
-            title = "title",
-            desc = "desc",
-            date = "2024-09-06T00:00:00Z",
-            imageUrl = "imageUrl"
-        )
-    )
+    private val articles = listOf(ArticleBuilder().build())
 
     private val errorMsg = "Exception occurred"
 
-
-    private val response = ArticleRawResponse(
-        title = "title",
-        desc = "desc",
-        date = "2024-09-06T00:00:00Z",
-        imageUrl = "imageUrl"
-    )
+    private val response = ArticleRawResponseBuilder().build()
 
     private val repository: ArticlesRepository by withMocks {
         val articlesMapper = ArticleEntityToDomainMapper()

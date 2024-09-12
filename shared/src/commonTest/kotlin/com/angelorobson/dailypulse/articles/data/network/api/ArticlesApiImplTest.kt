@@ -1,6 +1,5 @@
 package com.angelorobson.dailypulse.articles.data.network.api
 
-import com.angelorobson.dailypulse.TestUtils
 import com.angelorobson.dailypulse.TestUtils.getClient
 import com.angelorobson.dailypulse.TestUtils.newsJsonResponseBody
 import io.ktor.client.engine.mock.MockEngine

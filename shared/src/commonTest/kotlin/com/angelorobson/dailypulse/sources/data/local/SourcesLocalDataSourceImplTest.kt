@@ -1,8 +1,8 @@
 package com.angelorobson.dailypulse.sources.data.local
 
+import com.angelorobson.dailypulse.builders.SourceBuilder
 import com.angelorobson.dailypulse.db.DailyPulseDatabase
 import com.angelorobson.dailypulse.sources.domain.local.SourcesLocalDataSource
-import com.angelorobson.dailypulse.sources.domain.models.Source
 import com.angelorobson.dailypulse.testDbConnection
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -14,15 +14,7 @@ class SourcesLocalDataSourceImplTest {
     private lateinit var dailyPulseDatabase: DailyPulseDatabase
     private lateinit var sourcesLocalDataSource: SourcesLocalDataSource
 
-    private val source = Source(
-        id = "id",
-        name = "name",
-        desc = "desc",
-        language = "language",
-        country = "country",
-        origin = "origin"
-    )
-
+    private val source = SourceBuilder().build()
 
     @BeforeTest
     fun setUp() {

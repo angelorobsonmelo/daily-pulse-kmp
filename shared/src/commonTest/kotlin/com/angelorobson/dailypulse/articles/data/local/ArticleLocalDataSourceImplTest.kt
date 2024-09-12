@@ -2,6 +2,7 @@ package com.angelorobson.dailypulse.articles.data.local
 
 import com.angelorobson.dailypulse.articles.domain.local.ArticlesLocalDataSource
 import com.angelorobson.dailypulse.articles.domain.models.Article
+import com.angelorobson.dailypulse.builders.ArticleBuilder
 import com.angelorobson.dailypulse.db.DailyPulseDatabase
 import com.angelorobson.dailypulse.testDbConnection
 import kotlin.test.BeforeTest
@@ -14,12 +15,7 @@ class ArticleLocalDataSourceImplTest {
     private lateinit var dailyPulseDatabase: DailyPulseDatabase
     private lateinit var articleLocalDataSource: ArticlesLocalDataSource
 
-    private val article = Article(
-        title = "title",
-        desc = "desc",
-        date = "2024-09-06T00:00:00Z",
-        imageUrl = "imageUrl"
-    )
+    private val article = ArticleBuilder().build()
 
     @BeforeTest
     fun setUp() {
