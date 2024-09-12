@@ -1,5 +1,5 @@
 # KMP Sample Project
-This is an example project using Kotlin Multiplatform Mobile (KMP) to share code between Android and iOS. The project was developed with a focus on scalability and implementing best development practices.
+This sample project uses Kotlin Multiplatform Mobile (KMP) to share code between Android and iOS. The project was developed with a focus on scalability and implementing best development practices.
 
 ## Architecture
 * **Clean Architecture:** Following Clean Architecture principles, the code is modularized into layers, facilitating maintenance and testing.
@@ -8,7 +8,6 @@ This is an example project using Kotlin Multiplatform Mobile (KMP) to share code
 
 ## Key Libraries
 * **Kotlin Multiplatform (KMP):** Shared code between Android and iOS.
-* **Coil Compose:** Used for efficient image loading in Compose.
 * **Jetpack Compose:** Declarative framework to build modern UIs on Android.
 * **Swift UI:** Declarative framework to build modern UIs on iOS.
 * **SQLDelight:** Multiplatform database management with SQL support.
@@ -18,7 +17,7 @@ This is an example project using Kotlin Multiplatform Mobile (KMP) to share code
 * **Kotlinx Serialization:** JSON data serialization.
 * **BuildKonfig:** Stores sensitive settings, such as keys, without exposing them in the repository.
 
-## Tests
+## Test Libraries
 * **Turbine:** Testing flows with Flow.
 * **Robolectric:** For Android UI tests without an emulator.
 * **MockMP:** Used for creating mocks in multiplatform unit tests.
@@ -27,6 +26,17 @@ This is an example project using Kotlin Multiplatform Mobile (KMP) to share code
 
 ## Scalability
 This project is designed to be easily scalable, allowing new functionalities and modules to be added without compromising the existing architecture. The combination of Clean Architecture, SOLID principles, and multiplatform code with KMM is rare to find in a single project, making this an excellent starting point for robust projects.
+
+
+## How to Install
+ 1. Clone the repository to your local machine
+ 2. Obtain the API key from [News API](newsapi.org)
+ 3. Create **API_KEY** variable in your `local.properties`
+ ```kotlin
+   API_KEY = {your_key} 
+```
+4. Open the project in Android Studio or your preferred IDE for KMM development and run the project on your preferred platform.
+
 
 ## Architectural diagram
 
